@@ -1,6 +1,14 @@
 import Header from './components/Header';
 import Body from './components/Body';
 import Footer from './components/Footer';
+import ReactDOM from 'react-dom';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(
+      // <React.StrictMode>
+        <App />,(document.getElementById('root'))
+      // </React.StrictMode>
+    );
 
 function App() {
   return (

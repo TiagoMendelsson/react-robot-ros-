@@ -27,7 +27,7 @@ class Teleoperation extends Component {
 
             setTimeout (() => {
                 try{
-                    this.state.ros.connect("ws://172.17.0.1:9090");
+                    this.state.ros.connect("ws://10.0.2.15:9090");
                 }catch (error) {
                     console.log ("connection problem");
                 }
@@ -35,7 +35,7 @@ class Teleoperation extends Component {
 
         })
         try{
-            this.state.ros.connect("ws://172.17.0.1:9090");
+            this.state.ros.connect("ws://10.0.2.15:9090");
         } catch (error) {
             console.log("connection problem");
         }
@@ -48,28 +48,51 @@ class Teleoperation extends Component {
 
         var cmd_vel = new window.ROSLIB.Topic({
             ros: this.state.ros,
-            name:"/turtle1/cmd_vel",
+            name:"/cmd_vel",
             messageType:"geometry_msgs/Twist"
         });
         
         var Twist = new window.ROSLIB.Message({
             linear:{
-                x:event.y / 1,
+                x:event.y / 5,
                 y:0,
                 z:0,
             },
             angular:{
                 x:0,
                 y:0,
-                z:-event.x / 1,
+                z:-event.x / 5,
             },
             
         });
         console.log(Twist)
         cmd_vel.publish(Twist);
     }
-    handleStop() {
+    handleStop(event) {
         console.log("handle stop");
+        var cmd_vel = new window.ROSLIB.Topic({
+            ros: this.state.ros,
+            name:"/cmd_vel",
+            messageType:"geometry_msgs/Twist"
+        });
+        
+        var Twist = new window.ROSLIB.Message({
+            linear:{
+                x:0,
+                y:0,
+                z:0,
+            },
+            angular:{
+                x:0,
+                y:0,
+                z:0,
+            },
+            
+        });
+        console.log(Twist)
+        cmd_vel.publish(Twist);
+
+
     }
 
     render() {

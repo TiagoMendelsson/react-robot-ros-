@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import { Button, Row, Col, Container } from "react-bootstrap";
 import Connection from "./Connection";
 import Teleoperation from "./Teleoperation";
+import RobotState from "./RobotState";
+import Map from "./Map";
 
 class Home extends Component {
     state = {
@@ -22,10 +24,13 @@ class Home extends Component {
                     <Row>
                         <Col>
                             <Teleoperation />
+                            <Map></Map>
                         </Col>
+                    </Row>
+                    <Row>
                         <Col>
-                            <h1> MAP</h1>
-                            <p>região que sera usada pro display do map</p>
+                            <RobotState />
+                            
                         </Col>
                     </Row>
                     

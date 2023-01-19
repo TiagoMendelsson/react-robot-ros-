@@ -25,7 +25,7 @@ class Connection extends Component {
 
             setTimeout (() => {
                 try{
-                    this.state.ros.connect("ws://172.17.0.1:9090");
+                    this.state.ros.connect("ws://10.0.2.15:9090");
                 }catch (error) {
                     console.log ("connection problem");
                 }
@@ -33,7 +33,7 @@ class Connection extends Component {
 
         })
         try{
-            this.state.ros.connect("ws://172.17.0.1:9090");
+            this.state.ros.connect("ws://10.0.2.15:9090");
         } catch (error) {
             console.log("connection problem");
         }
